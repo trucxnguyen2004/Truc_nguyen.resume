@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Truc Nguyen's personal portfolio — projects, experience, and skills." />
+  <title>Truc Nguyen | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #20243a;
+      --muted: #687087;
+      --paper: #fbfaf8;
+      --white: #ffffff;
+      --lavender: #e9e7fb;
+      --purple: #6558b8;
+      --purple-dark: #4e4398;
+      --line: #e9e7e2;
+      --mint: #e3f1eb;
+      --peach: #f8e9df;
+      --shadow: 0 18px 50px rgba(35, 34, 65, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: "DM Sans", sans-serif; line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1080px, calc(100% - 44px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 10; background: rgba(251,250,248,.88);
+      backdrop-filter: blur(14px); border-bottom: 1px solid rgba(233,231,226,.8);
+    }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 700; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--purple); }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .9rem; }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border-radius: 999px; padding: 12px 19px; background: var(--purple); color: white;
+      font-weight: 600; font-size: .9rem; transition: .2s ease; border: 1px solid var(--purple);
+    }
+    .nav-cta:hover, .button:hover { background: var(--purple-dark); transform: translateY(-2px); }
+    .button.secondary { background: transparent; color: var(--ink); border-color: var(--line); }
+    .button.secondary:hover { background: var(--white); border-color: var(--purple); color: var(--purple); }
+    .menu-button { display: none; border: 0; background: transparent; font: inherit; font-size: 1.5rem; color: var(--ink); }
+    .hero { padding: 92px 0 86px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 55px; }
+    .eyebrow { color: var(--purple); text-transform: uppercase; letter-spacing: .16em; font-weight: 700; font-size: .72rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 700 clamp(3rem, 7vw, 5.7rem)/1.04 "Playfair Display", serif; letter-spacing: -.055em; margin: 17px 0 22px; }
+    h1 em { color: var(--purple); font-style: normal; }
+    .hero-copy { max-width: 570px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: .85rem; margin-top: 34px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #7db69b; box-shadow: 0 0 0 5px #e4f0e9; }
+    .hero-art {
+      min-height: 390px; position: relative; border-radius: 48% 48% 26px 26px;
+      background: linear-gradient(145deg, #e8e6fa, #f5e8e0); display: grid; place-items: center;
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .hero-art:before, .hero-art:after { content: ""; position: absolute; border: 1px solid rgba(101,88,184,.22); border-radius: 50%; }
+    .hero-art:before { width: 290px; height: 290px; }
+    .hero-art:after { width: 360px; height: 360px; }
+    .initials { width: 190px; height: 190px; display: grid; place-items: center; border-radius: 50%;
+      background: rgba(255,255,255,.78); color: var(--purple); font: 700 4.5rem "Playfair Display", serif;
+      box-shadow: 0 18px 45px rgba(69,57,140,.12); z-index: 1; }
+    .float-card { position: absolute; z-index: 2; background: white; padding: 13px 16px; border-radius: 15px;
+      box-shadow: var(--shadow); font-size: .82rem; font-weight: 600; }
+    .float-one { top: 48px; left: 8px; transform: rotate(-5deg); }
+    .float-two { bottom: 52px; right: 4px; transform: rotate(4deg); }
+    section { padding: 78px 0; }
+    .section-head { max-width: 620px; margin-bottom: 34px; }
+    h2 { font: 700 clamp(2.1rem, 4vw, 3.1rem)/1.15 "Playfair Display", serif; letter-spacing: -.035em; margin: 10px 0 12px; }
+    .section-head p, .muted { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 55px; align-items: start; }
+    .about-panel { padding: 28px; border-radius: var(--radius); background: var(--lavender); }
+    .about-panel strong { display: block; font: 600 1.5rem "Playfair Display", serif; margin-bottom: 8px; }
+    .about-text { color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .chip { padding: 8px 12px; border: 1px solid var(--line); background: white; border-radius: 999px; font-size: .8rem; color: #555d73; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: 0 8px 28px rgba(35,34,65,.035); transition: .2s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+    .icon-box { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; background: var(--lavender); font-size: 1.25rem; }
+    .tag { color: var(--purple); background: #f1efff; border-radius: 999px; padding: 6px 10px; font-size: .72rem; font-weight: 700; }
+    .card h3 { font-size: 1.16rem; margin-bottom: 7px; }
+    .card p { color: var(--muted); font-size: .92rem; margin-bottom: 0; }
+    .experience { display: grid; gap: 16px; }
+    .experience-item { display: grid; grid-template-columns: 155px 1fr; gap: 28px; padding: 25px 0; border-bottom: 1px solid var(--line); }
+    .experience-item:last-child { border-bottom: 0; }
+    .date { color: var(--purple); font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .experience-item h3 { margin-bottom: 5px; font-size: 1.12rem; }
+    .experience-item p { color: var(--muted); margin-bottom: 8px; font-size: .92rem; }
+    .experience-item ul { color: var(--muted); margin: 8px 0 0; padding-left: 18px; font-size: .9rem; }
+    .project-card { overflow: hidden; padding: 0; }
+    .project-visual { min-height: 185px; display: grid; place-items: center; font-size: 3rem; }
+    .visual-study { background: linear-gradient(135deg, #e3f1eb, #eff6ef); }
+    .visual-figma { background: linear-gradient(135deg, #f8e9df, #eee8fb); }
+    .project-content { padding: 24px; }
+    .project-content h3 { margin-bottom: 7px; }
+    .project-link { display: inline-flex; margin-top: 17px; color: var(--purple); font-weight: 700; font-size: .87rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .skill { background: white; border: 1px solid var(--line); padding: 20px; border-radius: 17px; }
+    .skill h3 { font-size: .98rem; margin-bottom: 6px; }
+    .skill p { color: var(--muted); font-size: .85rem; margin: 0; }
+    .contact { background: var(--ink); color: white; border-radius: 30px; padding: 54px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .contact h2 { margin-bottom: 10px; }
+    .contact p { color: #c5c8d6; margin: 0; }
+    .contact .button { background: white; color: var(--ink); border-color: white; white-space: nowrap; }
+    footer { padding: 30px 0; color: var(--muted); font-size: .82rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; }
+    @media (max-width: 760px) {
+      .nav-inner { height: 68px; }
+      .menu-button { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--paper); padding: 20px 22px 24px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 17px; }
+      .nav-links.open { display: flex; }
+      .nav-cta { display: none; }
+      .hero { padding: 65px 0 50px; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero-art { min-height: 300px; max-width: 430px; width: 100%; margin: 0 auto; }
+      section { padding: 58px 0; }
+      .cards, .skills-grid { grid-template-columns: 1fr; }
+      .experience-item { grid-template-columns: 1fr; gap: 8px; }
+      .contact { padding: 34px 26px; flex-direction: column; align-items: flex-start; }
+      footer .wrap { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">TN<span>.</span></a>
+      <button class="menu-button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#experience" onclick="closeMenu()">Experience</a>
+        <a href="#projects" onclick="closeMenu()">Projects</a>
+        <a href="#skills" onclick="closeMenu()">Skills</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Get in touch ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Student • Creative thinker • Community-minded</div>
+          <h1>Hello, I'm<br><em>Truc Nguyen.</em></h1>
+          <p class="hero-copy">Welcome to my portfolio. I'm a student who enjoys learning, creating, and finding ways to make a positive impact through leadership, collaboration, and thoughtful projects.</p>
+          <div class="hero-actions">
+            <a class="button" href="#projects">Explore my work <span>↗</span></a>
+            <a class="button secondary" href="#experience">View experience</a>
+          </div>
+          <div class="hero-note"><span class="dot"></span> Always learning something new</div>
+        </div>
+        <div class="hero-art" aria-label="Decorative initials illustration">
+          <div class="initials">TN</div>
+          <div class="float-card float-one">✦ Curiosity first</div>
+          <div class="float-card float-two">Ideas into action ↗</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Learning with purpose.</h2>
+          <p>I'm interested in growing my skills, connecting with people, and using creativity to solve everyday problems.</p>
+        </div>
+        <div>
+          <div class="about-panel">
+            <strong>“Small actions can make a meaningful difference.”</strong>
+            <span class="about-text">Through peer mentorship, volunteering, and personal projects, I value opportunities to contribute, stay curious, and keep improving.</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Leadership</span><span class="chip">Creativity</span><span class="chip">Community</span><span class="chip">Technology</span><span class="chip">Learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What I've been involved in</div>
+          <h2>Experience & leadership</h2>
+          <p>Experiences that have helped me build confidence, communication, and collaboration skills.</p>
+        </div>
+        <div class="experience">
+          <article class="experience-item">
+            <div class="date">Peer mentorship</div>
+            <div>
+              <h3>Link Crew Leader</h3>
+              <p>Supported incoming ninth-grade students as they adjusted to high school.</p>
+              <ul>
+                <li>Helped lead orientation activities and build connections among new students.</li>
+                <li>Provided ongoing encouragement and shared strategies for navigating school life.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="experience-item">
+            <div class="date">Volunteer leadership</div>
+            <div>
+              <h3>Team Leader · Catholic Youth Organization (CYO)</h3>
+              <p>Helped create a welcoming, faith-centered environment through teamwork and service.</p>
+              <ul>
+                <li>Encouraged participation, collaboration, and positive relationships within the team.</li>
+                <li>Worked with fellow leaders and coordinators to support group activities.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <p class="muted" style="font-size:.82rem;margin-top:18px;">Add your school/organization names and dates before publishing.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects I'm proud of</h2>
+          <p>A few examples of ideas I've explored through design and problem-solving.</p>
+        </div>
+        <div class="cards">
+          <article class="card project-card">
+            <div class="project-visual visual-study">📚</div>
+            <div class="project-content">
+              <span class="tag">Student project</span>
+              <h3>Study Buddy Project</h3>
+              <p>A project designed with students in mind, especially during busy study periods like finals week.</p>
+              <a class="project-link" href="#" aria-label="Add your Study Buddy project link">Add project link ↗</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-visual visual-figma">✳</div>
+            <div class="project-content">
+              <span class="tag">Figma · UI/UX</span>
+              <h3>Health & Wellness App</h3>
+              <p>A health and wellness application concept designed in Figma, exploring a more approachable digital experience.</p>
+              <a class="project-link" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">View Figma ↗</a>
+            </div>
+          </article>
+        </div>
+        <p class="muted" style="font-size:.82rem;margin-top:16px;">Replace the Study Buddy placeholder with your actual project URL and add a direct link to your Figma prototype.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">My toolkit</div>
+          <h2>Skills & strengths</h2>
+          <p>Skills I've developed through school, leadership, volunteering, and creative projects.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill"><h3>Leadership & mentorship</h3><p>Peer support, team guidance, and positive role modeling.</p></div>
+          <div class="skill"><h3>Communication</h3><p>Active listening, collaboration, and presenting ideas.</p></div>
+          <div class="skill"><h3>Organization</h3><p>Time management, planning, and coordinating activities.</p></div>
+          <div class="skill"><h3>Web development</h3><p>Website design and coding. Add the languages you know.</p></div>
+          <div class="skill"><h3>Creative design</h3><p>Figma, visual organization, and user-focused thinking.</p></div>
+          <div class="skill"><h3>Problem-solving</h3><p>Adaptability, critical thinking, and taking initiative.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="eyebrow" style="color:#c7c0ff;">Let's connect</div>
+            <h2>Thanks for stopping by.</h2>
+            <p>I'm always happy to connect, share ideas, and learn about new opportunities.</p>
+          </div>
+          <!-- Replace the email below with the address you want to make public. -->
+          <a class="button" href="mailto:your.email@example.com">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Truc Nguyen</span>
+      <span>Designed with curiosity and care.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      const button = document.querySelector(".menu-button");
+      const isOpen = nav.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(isOpen));
+      button.textContent = isOpen ? "×" : "☰";
+    }
+    function closeMenu() {
+      const nav = document.getElementById("navLinks");
+      const button = document.querySelector(".menu-button");
+      nav.classList.remove("open");
+      button.setAttribute("aria-expanded", "false");
+      button.textContent = "☰";
+    }
+  </script>
+</body>
+</html>
